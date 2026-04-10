@@ -1,0 +1,110 @@
+[
+  {
+    "id": "recipe-001",
+    "name": "High-Protein Chicken Stir-Fry",
+    "description": "Quick and easy 30-minute dinner packed with 45g protein per serving. Restaurant quality at home.",
+    "difficulty": "easy",
+    "coverImage": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=800",
+    "totalServings": 2,
+    "nutrition": {
+      "perServing": {
+        "calories": 420,
+        "protein": 45,
+        "carbs": 38,
+        "fats": 12
+      }
+    },
+    "timing": { "prep": 10, "cook": 20, "total": 30 },
+    "tags": ["high_protein", "quick", "gluten_free"],
+    "mealType": "dinner",
+    "stats": { "views": 12500, "saves": 3200, "rating": 4.8, "totalRatings": 450 },
+    "ingredients": [
+      { "id": "i1-1", "name": "Chicken breast", "amount": 400, "unit": "g", "nutrition": {"calories": 440, "protein": 82, "carbs": 0, "fats": 9.6}, "prepNotes": "diced into 1-inch cubes", "displayOrder": 1 },
+      { "id": "i1-2", "name": "Broccoli florets", "amount": 200, "unit": "g", "nutrition": {"calories": 68, "protein": 5.6, "carbs": 13.6, "fats": 0.8}, "prepNotes": "bite-sized pieces", "displayOrder": 2 },
+      { "id": "i1-3", "name": "Red bell pepper", "amount": 1, "unit": "whole", "nutrition": {"calories": 31, "protein": 1, "carbs": 7.5, "fats": 0.3}, "prepNotes": "sliced thin", "displayOrder": 3 },
+      { "id": "i1-4", "name": "Soy sauce (low sodium)", "amount": 3, "unit": "tbsp", "nutrition": {"calories": 30, "protein": 3, "carbs": 3, "fats": 0}, "prepNotes": null, "displayOrder": 4 },
+      { "id": "i1-5", "name": "Garlic cloves", "amount": 4, "unit": "cloves", "nutrition": {"calories": 18, "protein": 0.8, "carbs": 4, "fats": 0.1}, "prepNotes": "minced", "displayOrder": 5 },
+      { "id": "i1-6", "name": "Fresh ginger", "amount": 1, "unit": "tsp", "nutrition": {"calories": 2, "protein": 0, "carbs": 0.4, "fats": 0}, "prepNotes": "grated", "displayOrder": 6 },
+      { "id": "i1-7", "name": "Sesame oil", "amount": 1, "unit": "tbsp", "nutrition": {"calories": 120, "protein": 0, "carbs": 0, "fats": 14}, "prepNotes": null, "displayOrder": 7 },
+      { "id": "i1-8", "name": "Brown rice (cooked)", "amount": 200, "unit": "g", "nutrition": {"calories": 216, "protein": 5, "carbs": 45, "fats": 1.8}, "prepNotes": null, "displayOrder": 8 },
+      { "id": "i1-9", "name": "Spring onions", "amount": 3, "unit": "stalks", "nutrition": {"calories": 10, "protein": 0.5, "carbs": 2, "fats": 0}, "prepNotes": "sliced for garnish", "displayOrder": 9 }
+    ],
+    "steps": [
+      { "id": "s1-1", "stepNumber": 1, "title": "Prep the chicken", "instruction": "Cut chicken breast into 1-inch cubes. Pat completely dry with paper towels to ensure maximum browning. Season generously with salt, pepper, and a pinch of cornstarch. Toss to coat.", "proTip": "Dry chicken = better browning! The cornstarch creates a light crispy coating.", "timerSeconds": null },
+      { "id": "s1-2", "stepNumber": 2, "title": "Mix the sauce", "instruction": "In a small bowl, whisk together soy sauce, minced garlic, grated ginger, and 1 tsp cornstarch dissolved in 2 tbsp water. Set aside.", "proTip": null, "timerSeconds": null },
+      { "id": "s1-3", "stepNumber": 3, "title": "Heat the wok", "instruction": "Heat wok or large non-stick pan over high heat for 2 minutes until smoking hot. Add sesame oil and swirl to coat.", "proTip": "A screaming hot wok is the #1 secret to restaurant-quality stir-fry.", "timerSeconds": 120 },
+      { "id": "s1-4", "stepNumber": 4, "title": "Sear the chicken", "instruction": "Add chicken in a SINGLE LAYER — do not overcrowd. Cook undisturbed for 2 minutes until golden. Toss and cook 2 more minutes until cooked through. Remove from pan and set aside.", "proTip": "Resist the urge to stir! Let it sear for a crust.", "timerSeconds": 240 },
+      { "id": "s1-5", "stepNumber": 5, "title": "Stir-fry the vegetables", "instruction": "Add broccoli and bell pepper to the hot wok. Stir-fry for 3-4 minutes until tender-crisp and slightly charred. Return chicken to the pan.", "proTip": "You want a slight char on the veggies — that's flavor!", "timerSeconds": 210 },
+      { "id": "s1-6", "stepNumber": 6, "title": "Add sauce & serve", "instruction": "Pour sauce over everything. Toss vigorously for 30 seconds until sauce coats everything and thickens. Serve immediately over brown rice. Garnish with spring onions.", "proTip": "Move fast — the sauce thickens quickly!", "timerSeconds": 30 }
+    ]
+  },
+  {
+    "id": "recipe-002",
+    "name": "Overnight Protein Oats",
+    "description": "Prep once, eat breakfast all week. 32g protein with zero morning cooking required.",
+    "difficulty": "easy",
+    "coverImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800",
+    "totalServings": 1,
+    "nutrition": {
+      "perServing": {
+        "calories": 380,
+        "protein": 32,
+        "carbs": 45,
+        "fats": 10
+      }
+    },
+    "timing": { "prep": 5, "cook": 0, "total": 5 },
+    "tags": ["high_protein", "meal_prep", "vegetarian", "breakfast"],
+    "mealType": "breakfast",
+    "stats": { "views": 28000, "saves": 8400, "rating": 4.9, "totalRatings": 890 },
+    "ingredients": [
+      { "id": "i2-1", "name": "Rolled oats", "amount": 60, "unit": "g", "nutrition": {"calories": 228, "protein": 6, "carbs": 40, "fats": 4}, "prepNotes": null, "displayOrder": 1 },
+      { "id": "i2-2", "name": "Vanilla protein powder", "amount": 30, "unit": "g", "nutrition": {"calories": 120, "protein": 24, "carbs": 3, "fats": 1.5}, "prepNotes": null, "displayOrder": 2 },
+      { "id": "i2-3", "name": "Greek yogurt (0% fat)", "amount": 100, "unit": "g", "nutrition": {"calories": 59, "protein": 10, "carbs": 3.6, "fats": 0.4}, "prepNotes": null, "displayOrder": 3 },
+      { "id": "i2-4", "name": "Almond milk (unsweetened)", "amount": 150, "unit": "ml", "nutrition": {"calories": 22, "protein": 0.6, "carbs": 1, "fats": 1.5}, "prepNotes": null, "displayOrder": 4 },
+      { "id": "i2-5", "name": "Chia seeds", "amount": 1, "unit": "tbsp", "nutrition": {"calories": 58, "protein": 2, "carbs": 4, "fats": 3.5}, "prepNotes": null, "displayOrder": 5 },
+      { "id": "i2-6", "name": "Banana (for topping)", "amount": 0.5, "unit": "whole", "nutrition": {"calories": 45, "protein": 0.6, "carbs": 12, "fats": 0.2}, "prepNotes": "sliced", "displayOrder": 6 }
+    ],
+    "steps": [
+      { "id": "s2-1", "stepNumber": 1, "title": "Mix the dry ingredients", "instruction": "Add oats, protein powder, and chia seeds to a mason jar or airtight container. Mix until evenly combined.", "proTip": "A wide-mouth mason jar is perfect — you can eat straight from it!", "timerSeconds": null },
+      { "id": "s2-2", "stepNumber": 2, "title": "Add wet ingredients", "instruction": "Add Greek yogurt and almond milk. Stir everything vigorously until the protein powder is fully dissolved and no clumps remain.", "proTip": "Slightly warm milk dissolves protein powder much more easily.", "timerSeconds": null },
+      { "id": "s2-3", "stepNumber": 3, "title": "Refrigerate overnight", "instruction": "Cover tightly and refrigerate for at least 4 hours, ideally overnight (8 hours). The oats will absorb all liquid and turn thick and creamy.", "proTip": "Prep 5 jars on Sunday for a whole week of breakfasts!", "timerSeconds": null },
+      { "id": "s2-4", "stepNumber": 4, "title": "Top and serve", "instruction": "In the morning, give it a stir. Top with sliced banana, a drizzle of honey, or fresh berries. Eat cold or microwave for 60 seconds.", "proTip": null, "timerSeconds": null }
+    ]
+  },
+  {
+    "id": "recipe-003",
+    "name": "Salmon & Sweet Potato Sheet Pan",
+    "description": "One pan, minimal cleanup — omega-3 rich salmon with perfectly roasted sweet potato.",
+    "difficulty": "medium",
+    "coverImage": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=800",
+    "totalServings": 2,
+    "nutrition": {
+      "perServing": {
+        "calories": 510,
+        "protein": 42,
+        "carbs": 44,
+        "fats": 18
+      }
+    },
+    "timing": { "prep": 10, "cook": 25, "total": 35 },
+    "tags": ["high_protein", "omega3", "gluten_free", "pescetarian"],
+    "mealType": "dinner",
+    "stats": { "views": 9200, "saves": 2100, "rating": 4.7, "totalRatings": 320 },
+    "ingredients": [
+      { "id": "i3-1", "name": "Salmon fillets", "amount": 2, "unit": "fillets (180g each)", "nutrition": {"calories": 720, "protein": 72, "carbs": 0, "fats": 48}, "prepNotes": "skin-on", "displayOrder": 1 },
+      { "id": "i3-2", "name": "Sweet potato", "amount": 400, "unit": "g", "nutrition": {"calories": 344, "protein": 5.2, "carbs": 80, "fats": 0.4}, "prepNotes": "cubed into 1-inch pieces", "displayOrder": 2 },
+      { "id": "i3-3", "name": "Green beans", "amount": 200, "unit": "g", "nutrition": {"calories": 62, "protein": 3.6, "carbs": 14, "fats": 0.4}, "prepNotes": "trimmed", "displayOrder": 3 },
+      { "id": "i3-4", "name": "Olive oil", "amount": 2, "unit": "tbsp", "nutrition": {"calories": 240, "protein": 0, "carbs": 0, "fats": 28}, "prepNotes": null, "displayOrder": 4 },
+      { "id": "i3-5", "name": "Smoked paprika", "amount": 1, "unit": "tsp", "nutrition": {"calories": 6, "protein": 0.3, "carbs": 1.2, "fats": 0.3}, "prepNotes": null, "displayOrder": 5 },
+      { "id": "i3-6", "name": "Lemon", "amount": 1, "unit": "whole", "nutrition": {"calories": 17, "protein": 0.6, "carbs": 5.4, "fats": 0.2}, "prepNotes": "halved", "displayOrder": 6 }
+    ],
+    "steps": [
+      { "id": "s3-1", "stepNumber": 1, "title": "Preheat & prep pan", "instruction": "Preheat oven to 220°C (425°F). Line a large sheet pan with parchment paper.", "proTip": "Overcrowding = steaming, not roasting. Use two pans if needed!", "timerSeconds": null },
+      { "id": "s3-2", "stepNumber": 2, "title": "Season & roast sweet potato", "instruction": "Toss sweet potato cubes with 1 tbsp olive oil, paprika, salt and pepper. Spread in a single layer. Roast 15 minutes.", "proTip": "Cut potatoes evenly so they cook at the same rate.", "timerSeconds": 900 },
+      { "id": "s3-3", "stepNumber": 3, "title": "Add green beans", "instruction": "Push sweet potato to one side. Add green beans tossed in olive oil, salt and pepper. Roast another 5 minutes.", "proTip": null, "timerSeconds": 300 },
+      { "id": "s3-4", "stepNumber": 4, "title": "Add salmon & finish", "instruction": "Place salmon fillets skin-side down. Season with salt, pepper, and lemon squeeze. Roast 10-12 minutes until salmon flakes easily.", "proTip": "Salmon is done when it turns opaque and flakes — don't overcook!", "timerSeconds": 660 },
+      { "id": "s3-5", "stepNumber": 5, "title": "Rest & serve", "instruction": "Remove from oven. Squeeze remaining lemon over everything. Let salmon rest 2 minutes. Plate with vegetables.", "proTip": "Resting allows juices to redistribute — worth the 2 minutes!", "timerSeconds": 120 }
+    ]
+  }
+]

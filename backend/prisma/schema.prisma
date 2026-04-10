@@ -1,0 +1,303 @@
+// This is your Prisma schema file
+// Using SQLite for local dev, swap DATABASE_URL for PostgreSQL in prod
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  firstName    String?
+  lastName     String?
+  profileImage String?
+  googleId     String?  @unique
+
+  // Biometrics
+  age           Int?
+  weightKg      Float?
+  heightCm      Float?
+  gender        String?
+  activityLevel String?  // sedentary, lightly_active, moderately_active, very_active, athlete
+
+  // Goals
+  currentGoal     String?  // cutting, bulking, maintenance
+  tdee            Int?
+  targetCalories  Int?
+  targetProtein   Int?
+  targetCarbs     Int?
+  targetFats      Int?
+
+  // Gamification
+  streakCount     Int @default(0)
+  lastActiveDate  String?  // stored as YYYY-MM-DD string
+  lastGoalMetDate String?  // stored as YYYY-MM-DD string
+  totalMeals      Int @default(0)
+
+  // Preferences (stored as JSON string for SQLite compat)
+  dietaryRestrictions String @default("[]")
+  favoriteCuisines    String @default("[]")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  orders        Order[]
+  dailyTracking DailyTracking[]
+  savedRecipes  SavedRecipe[]
+  recipes       Recipe[]        @relation("RecipeCreator")
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Restaurant {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  logoUrl     String?
+  phone       String?
+  email       String?
+  address     String?
+  city        String?
+  state       String?
+  zipCode     String?
+
+  isVerified                Boolean @default(false)
+  macroAccuracyCertification Boolean @default(false)
+
+  totalMeals    Int     @default(0)
+  averageRating Float   @default(0)
+
+  createdAt DateTime @default(now())
+  meals     Meal[]
+}
+
+model Meal {
+  id           String  @id @default(cuid())
+  name         String
+  description  String?
+  restaurantId String?
+  restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+
+  primaryImageUrl String
+  galleryImages   String @default("[]")  // JSON array
+
+  basePortionSize String?
+  baseCalories    Int
+  baseProtein     Int
+  baseCarbs       Int
+  baseFats        Int
+  baseFiber       Int?
+  baseSodium      Int?
+  baseSugar       Int?
+  basePrice       Float
+
+  availablePortionSizes String @default("[0.5,1,1.5,2]")  // JSON array
+  proteinBoostAvailable Boolean @default(false)
+  proteinBoostAmount    Int?
+  proteinBoostPrice     Float?
+
+  proteinSwapOptions String @default("{}")  // JSON
+  carbSwapOptions    String @default("{}")  // JSON
+
+  mealType   String?
+  dietaryTags String @default("[]")  // JSON array
+  cuisineType String?
+
+  prepTimeMinutes Int?
+  ingredients     String @default("[]")  // JSON array
+  allergens       String @default("[]")  // JSON array
+
+  rating              Float @default(0)
+  totalRatings        Int   @default(0)
+  macroAccuracyScore  Int   @default(95)
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orderItems OrderItem[]
+}
+
+model Recipe {
+  id          String  @id @default(cuid())
+  mealId      String?
+
+  name        String
+  description String?
+  difficulty  String  @default("easy")  // easy, medium, hard
+
+  coverImageUrl    String?
+  videoTutorialUrl String?
+
+  totalServings       Int @default(1)
+  caloriesPerServing  Int?
+  proteinPerServing   Int?
+  carbsPerServing     Int?
+  fatsPerServing      Int?
+
+  prepTimeMinutes  Int?
+  cookTimeMinutes  Int?
+  totalTimeMinutes Int?
+
+  dietaryTags String @default("[]")  // JSON array
+  mealType    String?
+  cuisineType String?
+
+  viewCount    Int @default(0)
+  saveCount    Int @default(0)
+  rating       Float @default(0)
+  totalRatings Int   @default(0)
+
+  createdById String?
+  createdBy   User?    @relation("RecipeCreator", fields: [createdById], references: [id])
+  isPublished Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  ingredients  RecipeIngredient[]
+  steps        RecipeStep[]
+  savedByUsers SavedRecipe[]
+}
+
+model RecipeIngredient {
+  id       String @id @default(cuid())
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  name      String
+  amount    Float
+  unit      String?
+
+  calories Int?
+  protein  Float?
+  carbs    Float?
+  fats     Float?
+
+  prepNotes    String?
+  displayOrder Int @default(0)
+
+  createdAt DateTime @default(now())
+}
+
+model RecipeStep {
+  id       String @id @default(cuid())
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  stepNumber   Int
+  title        String?
+  instruction  String
+
+  stepImageUrl String?
+  stepVideoUrl String?
+
+  timerSeconds Int?
+  proTip       String?
+
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  status String @default("pending")  // pending, confirmed, preparing, out_for_delivery, delivered, cancelled
+
+  deliveryAddress  String?
+  deliveryDate     String?
+  deliveryTimeSlot String?
+
+  subtotal    Float?
+  tax         Float?
+  deliveryFee Float?
+  total       Float?
+
+  paymentIntentId String?
+  paymentStatus   String?
+
+  specialInstructions String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  mealId  String
+  meal    Meal   @relation(fields: [mealId], references: [id])
+
+  portionSize       Float   @default(1)
+  proteinBoostAdded Boolean @default(false)
+  proteinSwap       String?
+  carbSwap          String?
+
+  calories  Int?
+  protein   Int?
+  carbs     Int?
+  fats      Int?
+
+  unitPrice  Float
+  quantity   Int   @default(1)
+  totalPrice Float
+
+  createdAt DateTime @default(now())
+}
+
+model DailyTracking {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  trackingDate String  // YYYY-MM-DD
+
+  consumedCalories Int @default(0)
+  consumedProtein  Int @default(0)
+  consumedCarbs    Int @default(0)
+  consumedFats     Int @default(0)
+
+  goalMet Boolean @default(false)
+  mealIds String  @default("[]")  // JSON array of meal IDs
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, trackingDate])
+}
+
+model SavedRecipe {
+  id       String @id @default(cuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [id])
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+
+  personalNotes  String?
+  lastCookedDate String?
+  timesCoded     Int     @default(0)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, recipeId])
+}
