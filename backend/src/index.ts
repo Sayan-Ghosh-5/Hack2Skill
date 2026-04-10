@@ -77,9 +77,9 @@ app.use((_req, res) => {
 app.use(errorHandler);
 
 // --- Start Server ---
-app.listen(PORT, () => {
-  console.log(`\n🚀 MacroPlate API running on http://localhost:${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
+app.listen(PORT as number, '0.0.0.0', () => {
+  console.log(`\n🚀 MacroPlate API running on http://0.0.0.0:${PORT}`);
+  console.log(`📊 Health check: http://0.0.0.0:${PORT}/health`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}\n`);
 });
 
